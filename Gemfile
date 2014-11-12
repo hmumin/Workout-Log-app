@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 3.3.0'
 gem 'bootstrap-sass', '~> 3.3.0'
+gem 'simple_form', '~> 3.1.0.rc2'
+gem 'bootstrap-datepicker-rails'
+gem "watu_table_builder", :require => "table_builder"
 
 group :development, :test do
 	gem 'sqlite3'

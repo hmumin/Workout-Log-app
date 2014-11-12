@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  devise_for :users
+  resources :workouts
   get "about" => 'welcome#about'
   root 'welcome#home'
 

@@ -1,0 +1,56 @@
+<h2>Your Workouts Calendar</h2>
+ <center><%= link_to "Add new workout", new_workout_path, class: "btn btn-primary btn-lg" %></center>
+<div id="calendar">
+  <h2 id="month">
+    <%= link_to "<", :month => (@this_day.beginning_of_month-1).strftime("%Y-%m-%d") %>
+    <%=h @this_day.strftime("%B %Y")%>
+    <%= link_to ">", :month => (@this_day.end_of_month+1).strftime("%Y-%m-%d") %>
+  </h2>
+<%= calendar_for(@workouts, :year => @this_day.year, :month => @this_day.month) do |t| %>
+  <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+  <%= t.day(:day_method => :date) do |day, workouts| %>
+    <%= day.day %>
+     <ul>
+        <% for workout in workouts %>
+          <li><%= link_to h(workout.workout_name), workout %></li>
+        <% end %>
+      </ul>
+  <% end %>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
