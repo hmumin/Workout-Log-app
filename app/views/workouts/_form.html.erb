@@ -1,4 +1,32 @@
+<h1>Your Workout: <%= @workout.workout_name %></h1>
 
+<p>
+  <strong>Workout Name:</strong>
+  <%= @workout.workout_name %>
+</p>
+
+<p>
+  <strong> Date:</strong>
+  <%= @workout.date %>
+</p>
+<p>
+  <strong>What you did/accomplished:</strong>
+  <%= @workout.whats_done %>
+
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @workout.notes %>
+
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_workout_path %><br>
+  <%= link_to "Back", workouts_path %><br>
+  <%= link_to 'Delete', workout_path(@workout),
+        method: :delete, data: { confirm: "U Sure?"} %>
+</p>
 
 
 

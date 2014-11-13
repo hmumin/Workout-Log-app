@@ -1,11 +1,11 @@
 class WorkoutsController < ApplicationController
-
+before_action :authenticate_user!
 	def new
-		@workout = Workout.new
+		@workout = current_user.workouts.new
 	end
 
 	def create
-		@workout = Workout.new(workout_params)
+		@workout = current_user.workouts.new(workout_params)
 
 		if @workout.save
 			redirect_to @workout
@@ -16,20 +16,20 @@ class WorkoutsController < ApplicationController
 	end
 
 	def show
-		@workout = Workout.find(params[:id])
+		@workout = current_user.workouts.find(params[:id])
 	end
 
 	def index 
-		@workouts = Workout.all
+		@workouts = current_user.workouts.all
 		@this_day = params[:month] ? Date.parse(params[:month]) : Date.today
 	end
 
 	def edit
-		@workout = Workout.find(params[:id])
+		@workout = current_user.workouts.find(params[:id])
 	end
 
 	def update
-		@workout = Workout.find(params[:id])
+		@workout = current_user.workouts.find(params[:id])
 
 		if @workout.update(workout_params)
 			redirect_to @workout
@@ -39,7 +39,7 @@ class WorkoutsController < ApplicationController
 	end
 
 	def destroy
-		@workout = Workout.find(params[:id])
+		@workout = current_user.workouts.find(params[:id])
 
 		@workout.destroy
 		redirect_to workouts_path
